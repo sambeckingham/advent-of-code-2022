@@ -1,5 +1,6 @@
-input = open('./input', 'r')
+input = open("./input", "r")
 lines = input.readlines()
+
 
 def get_letter_priority(letter: str) -> int:
     if ord(letter) <= 90:
@@ -7,19 +8,20 @@ def get_letter_priority(letter: str) -> int:
     else:
         return ord(letter) - 96
 
+
 # Part 1
 total: int = 0
 for line in lines:
     line = list(line.strip())
-    
-    firstHalf = set(line[:len(line)//2])
-    secondHalf = set(line[len(line)//2:])
+
+    firstHalf = set(line[: len(line) // 2])
+    secondHalf = set(line[len(line) // 2 :])
 
     priorityItem = firstHalf.intersection(secondHalf).pop()
 
     total += get_letter_priority(priorityItem)
 
-print('Part 1: %d' %total)
+print("Part 1: %d" % total)
 
 # Part 2
 
@@ -33,7 +35,6 @@ for line in lines:
         badgeLetter = set.intersection(*groupList).pop()
         total += get_letter_priority(badgeLetter)
         groupList = []
-        
 
-print('Part 2: %d' %total)
 
+print("Part 2: %d" % total)
